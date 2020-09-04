@@ -1,0 +1,20 @@
+$primary-color: #47cfac;
+$Secondary-color: #ccd1d9 ;
+$Third-color: #434953 ;
+$Optional-color: #ffffff ;
+
+nav {
+    justify-content: space-between;
+}
+a {
+    margin-right: 15px;
+    text-decoration: none;
+    padding: 10px;
+}
+a.active {
+    background-color: $primary-color;
+    color: $Optional-color;
+}
+a {
+    color: $Third-color;
+}
