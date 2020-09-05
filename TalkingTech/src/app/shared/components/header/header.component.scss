@@ -3,18 +3,17 @@ $Secondary-color: #ccd1d9 ;
 $Third-color: #434953 ;
 $Optional-color: #ffffff ;
 
-nav {
-    justify-content: space-between;
-}
 a {
     margin-right: 15px;
     text-decoration: none;
     padding: 10px;
 }
 a.active {
-    background-color: $primary-color;
-    color: $Optional-color;
+    border-bottom: 3px solid $primary-color;
+    color: $primary-color;
 }
-a {
-    color: $Third-color;
+
+.container_list li a {
+    font-size: 15px;
+    font-weight: bold;
 }
