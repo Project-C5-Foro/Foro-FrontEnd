@@ -23,7 +23,7 @@
       </div>
     </div>
 <form [formGroup]="form" class="col-12 col-lg-6">
-            <mat-card-title>Register</mat-card-title>
+            <mat-card-title>Registrate</mat-card-title>
             <div class="row">
                 <div class="col-xs">
                   <mat-form-field>
@@ -57,6 +57,11 @@
                 </mat-form-field>
               </div>
             </div>
+            <div class="row">
+              <div class="col-xs">
+                  <input type="file">
+              </div>
+          </div>
         <mat-card-actions>
             <button [disabled]="form.invalid" mat-raised-button type="submit">Enviar</button>
         </mat-card-actions>
