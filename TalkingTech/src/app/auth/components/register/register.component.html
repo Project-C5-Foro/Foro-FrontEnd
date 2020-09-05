@@ -1,10 +1,29 @@
-<a routerLink="/home">Volver</a>
-<form [formGroup]="form">
-    <mat-card>
-        <mat-card-header>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="return__container">
+      <a  mat-raised-button routerLink="/home" class="return" >Volver</a>
+    </div>
+    </div>
+  </div>
+  <div class="row register__container">
+    <div class="col-12 col-lg-6">
+      <div class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img src="./../../../../assets/img_auth/002-blogger.png" class="d-block w-60" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./../../../../assets/img_auth/009-blog.png" class="d-block w-60" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="./../../../../assets/img_auth/010-blog-1.png" class="d-block w-60" alt="...">
+          </div>
+        </div>
+      </div>
+    </div>
+<form [formGroup]="form" class="col-12 col-lg-6">
             <mat-card-title>Register</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
             <div class="row">
                 <div class="col-xs">
                   <mat-form-field>
@@ -38,9 +57,9 @@
                 </mat-form-field>
               </div>
             </div>
-        </mat-card-content>
         <mat-card-actions>
             <button [disabled]="form.invalid" mat-raised-button type="submit">Enviar</button>
         </mat-card-actions>
-    </mat-card>
 </form>
+</div>
+</div>

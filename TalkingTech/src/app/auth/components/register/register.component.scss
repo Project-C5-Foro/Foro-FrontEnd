@@ -2,3 +2,26 @@ $primary-color: #47cfac;
 $Secondary-color: #ccd1d9 ;
 $Third-color: #434953 ;
 $Optional-color: #ffffff ;
+$New-color: #584796;
+
+.return__container{
+    display: flex;
+    margin-top: 40px;
+    flex-direction: row-reverse;
+}
+.return{
+    background-color: $primary-color;
+    color: $Optional-color;
+    text-decoration: none;
+}
+
+.register__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+button{
+    background-color: $primary-color;
+    color: $Optional-color;
+}
