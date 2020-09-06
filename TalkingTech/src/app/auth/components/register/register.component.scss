@@ -21,8 +21,44 @@ $New-color: #584796;
     justify-content: center;
     margin-top: 50px;
 }
-button{
-    margin-top: 15px;
+.carousel__container{
+    margin-bottom: 40px;
+}
+.button__auth{
     background-color: $primary-color;
     color: $Optional-color;
+}
+.button__submit{
+    font-size: 20px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    background-color: $primary-color;
+    color: $Optional-color;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+mat-error{
+    color: $New-color;
+}
+h3{
+    color: $Third-color;
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: -40px;
+    margin-bottom: 40px;
+}
+mat-form-field{
+    margin-bottom: 15px;
+}
+input{
+    color: $Third-color;
+}
+.input__file{
+    color: $New-color;
+    margin-top: 15px;
 }
