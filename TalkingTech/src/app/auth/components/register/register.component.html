@@ -25,40 +25,57 @@
     <form [formGroup]="form" class="col-12 col-lg-6">
       <div class="container__form">
             <h3>Regístrate</h3>
-            <div class="row prueba" >
-                <div class="col-xs">
+            <div class="row" >
+                <div class="col-xs input__text">
                   <mat-form-field class="input">
                     <input placeholder="Name" formControlName="name" matInput type="text">
-                    <mat-error class="alert alert-danger" role="alert" >Prueba de alerta</mat-error>
                   </mat-form-field>
+                  <div *ngIf="form.get('name').errors && form.get('name').dirty || form.get('name').touched">
+                    <mat-error  *ngIf="form.get('name').hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
+                    <mat-error  *ngIf="form.get('name').hasError('name')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
+                  </div>
                 </div>
             </div>
-            <div class="row input__text">
-                <div class="col-xs">
+            <div class="row">
+                <div class="col-xs input__text">
                   <mat-form-field>
                     <input placeholder="Last name" formControlName="lastname" matInput type="text">
-                    <mat-error class="alert alert-danger" role="alert" >Prueba de alerta</mat-error>
                   </mat-form-field>
+                  <div *ngIf="form.get('lastname').errors && form.get('lastname').dirty || form.get('lastname').touched">
+                    <mat-error  *ngIf="form.get('lastname').hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
+                    <mat-error  *ngIf="form.get('lastname').hasError('lastname')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
+                  </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs">
+                <div class="col-xs input__text">
                   <mat-form-field>
                     <input placeholder="Email" formControlName="email" matInput type="email">
-                    <mat-error class="alert alert-danger" role="alert" >Prueba de alerta</mat-error>
                   </mat-form-field>
+                  <div *ngIf="form.get('email').errors && form.get('email').dirty || form.get('email').touched">
+                    <mat-error  *ngIf="form.get('email').hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
+                    <mat-error  *ngIf="form.get('email').hasError('email')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
+                  </div>
                 </div>
             </div>
             <div class="row">
-              <div class="col-xs">
-                <mat-form-field>
-                    <mat-label>Enter your password</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
-                    <mat-error class="alert alert-danger" role="alert" >Prueba de alerta</mat-error>
-                    <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                </mat-form-field>
+              <div class="col-xs input__text">
+                  <mat-form-field>
+                      <mat-label>Enter your password</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
+                      <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                  </mat-form-field>
+                <div *ngIf="form.get('password').errors && form.get('password').dirty || form.get('password').touched">
+                  <p  *ngIf="form.get('password').hasError('password_invalid')" class="alert alert-secondary" role="alert" >
+                    Este campo requiere: <br>
+                    Minino 6 caracteres <br>
+                    Minimo 1 letra mayuscula <br>
+                    Minimo 1 Numero
+                  </p>
+                  <mat-error  *ngIf="form.get('password').hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
+                </div>
               </div>
             </div>
             <div class="row">

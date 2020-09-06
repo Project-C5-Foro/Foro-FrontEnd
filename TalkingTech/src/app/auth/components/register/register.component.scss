@@ -2,7 +2,7 @@ $primary-color: #47cfac;
 $Secondary-color: #ccd1d9 ;
 $Third-color: #434953 ;
 $Optional-color: #ffffff ;
-$New-color: #301f70;
+$Four-color: #301f70;
 
 // btn-return home
 .return__container{
@@ -44,20 +44,23 @@ form {
     align-items: center;
 }
 mat-form-field{
-    margin-bottom: 15px;
     font-size: 18px;
 }
 mat-error{
-    color: $New-color;
+    color: $Four-color;
+    margin-left: 10px;
 }
 input{
     color: $Third-color;
 }
+p{
+    margin-top: -15px;
+    color: $Four-color;
+}
 .input__file{
-    color: $New-color;
+    color: $Four-color;
     margin-top: 15px;
 }
-
 //btn--register
 .button__submit{
     font-size: 20px;
