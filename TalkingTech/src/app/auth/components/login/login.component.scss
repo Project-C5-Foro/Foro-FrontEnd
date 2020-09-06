@@ -1,0 +1,118 @@
+$primary-color: #47cfac;
+$Secondary-color: #ccd1d9 ;
+$Third-color: #434953 ;
+$Optional-color: #ffffff ;
+$New-color: #584796;
+
+
+//btn--return home
+.return__container{
+    display: flex;
+    margin-top: 40px;
+    flex-direction: row-reverse;
+}
+.return{
+    background-color: $primary-color;
+    color: $Optional-color;
+    text-decoration: none;
+}
+//btn--return home
+
+//container login
+.login__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+//container login
+
+// carousel 
+
+// carousel
+
+// form
+
+h3{
+    color: $Third-color;
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: -40px;
+    margin-bottom: 40px;
+}
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+mat-form-field{
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+mat-error{
+    color: $New-color;
+}
+.recover{
+    margin-top: 15px;
+}
+.recover a{
+    font-weight: bold;
+    font-size: 20px;
+    color: $New-color;
+}
+.register{
+    margin-bottom: 5px;
+}
+.register span{
+    font-size: 15px;
+}
+.register span a {
+    font-weight: bold;
+    color: $New-color;
+}
+
+//btn login//
+.button__submit{
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    background-color: $primary-color;
+    color: $Optional-color;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+//btn login//
+
+//btn password
+.button__auth{
+    background-color: $primary-color;
+    color: $Optional-color;
+}
+//btn password
+
+// form
+
+// media 
+@media screen and (max-width:768px){
+    h3{
+        margin-top: 30px;
+    }
+    .register{
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width:480px){
+    h3{
+        margin-top: 30px;
+    }
+}
+@media screen and (max-width:320px){
+    h3{
+        margin-top: 30px;
+    }
+    .register{
+        margin-bottom: 20px;
+    }
+  }
+
+// media
