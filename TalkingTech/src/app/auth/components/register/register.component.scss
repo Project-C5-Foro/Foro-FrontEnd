@@ -4,6 +4,7 @@ $Third-color: #434953 ;
 $Optional-color: #ffffff ;
 $New-color: #584796;
 
+// btn-return home
 .return__container{
     display: flex;
     margin-top: 40px;
@@ -14,20 +15,50 @@ $New-color: #584796;
     color: $Optional-color;
     text-decoration: none;
 }
+// btn-return home
 
+//container login
 .register__container{
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 50px;
 }
-.carousel__container{
+//container login
+
+//carousel
+
+//carousel
+
+//form
+h3{
+    color: $Third-color;
+    font-weight: bold;
+    font-size: 35px;
+    margin-top: -40px;
     margin-bottom: 40px;
 }
-.button__auth{
-    background-color: $primary-color;
-    color: $Optional-color;
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+mat-form-field{
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+mat-error{
+    color: $New-color;
+}
+input{
+    color: $Third-color;
+}
+.input__file{
+    color: $New-color;
+    margin-top: 15px;
+}
+
+//btn--register
 .button__submit{
     font-size: 20px;
     margin-bottom: 5px;
@@ -37,28 +68,34 @@ $New-color: #584796;
     padding-left: 50px;
     padding-right: 50px;
 }
-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+//btn--register
+// btn--password
+.button__auth{
+    background-color: $primary-color;
+    color: $Optional-color;
 }
-mat-error{
-    color: $New-color;
+// btn--password
+//form
+//media
+@media screen and (max-width:768px){
+    h3{
+        margin-top: 30px;
+    }
+    .button__submit{
+        margin-bottom: 20px;
+    }
 }
-h3{
-    color: $Third-color;
-    font-weight: bold;
-    font-size: 35px;
-    margin-top: -40px;
-    margin-bottom: 40px;
+@media screen and (max-width:480px){
+    h3{
+        margin-top: 30px;
+    }
 }
-mat-form-field{
-    margin-bottom: 15px;
-}
-input{
-    color: $Third-color;
-}
-.input__file{
-    color: $New-color;
-    margin-top: 15px;
-}
+@media screen and (max-width:320px){
+    h3{
+        margin-top: 30px;
+    }
+    .button__submit{
+        margin-bottom: 20px;
+    }
+  }
+//media
