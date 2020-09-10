@@ -8,7 +8,12 @@
   </div>
   <div class="row register__container">
     <div class="col-12 col-lg-6 carousel__container">
-      <div class="carousel slide" data-ride="carousel">
+      <div id="btn__next" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#btn__next" data-slide-to="0" class="active"></li>
+          <li data-target="#btn__next" data-slide-to="1"></li>
+          <li data-target="#btn__next" data-slide-to="2"></li>
+        </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
               <img src="./../../../../assets/img_auth/002-blogger.png" class="d-block w-100" alt="...">
@@ -26,18 +31,18 @@
       <div class="container__form">
             <h3>Regístrate</h3>
             <div class="row" >
-                <div class="col-xs input__text">
+                <div class="col-8 input__text">
                   <mat-form-field class="input">
                     <input placeholder="Name" formControlName="name" matInput type="text">
                   </mat-form-field>
-                  <div *ngIf="form.get('name').errors && form.get('name').dirty || form.get('name').touched">
-                    <mat-error  *ngIf="form.get('name').hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                    <mat-error  *ngIf="form.get('name').hasError('name')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
+                  <div *ngIf="nameField.errors && nameField.dirty || nameField.touched">
+                    <mat-error  *ngIf="nameField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
+                    <mat-error  *ngIf="nameField.hasError('pattern')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
                   </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs input__text">
+                <div class="col-8 input__text">
                   <mat-form-field>
                     <input placeholder="Last name" formControlName="lastname" matInput type="text">
                   </mat-form-field>
@@ -48,7 +53,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs input__text">
+                <div class="col-8 input__text">
                   <mat-form-field>
                     <input placeholder="Email" formControlName="email" matInput type="email">
                   </mat-form-field>
@@ -59,7 +64,7 @@
                 </div>
             </div>
             <div class="row">
-              <div class="col-xs input__text">
+              <div class="col-8 input__text">
                   <mat-form-field>
                       <mat-label>Enter your password</mat-label>
                       <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
@@ -79,7 +84,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-xs input__file">
+              <div class="col-8 input__file">
                   <input formControlName="image"  type="file">
               </div>
           </div>

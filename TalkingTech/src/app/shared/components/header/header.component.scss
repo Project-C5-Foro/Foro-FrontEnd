@@ -4,10 +4,27 @@ $Third-color: #434953 ;
 $Fourth-color: #301f70;
 $Optional-color: #ffffff;
 
+.container__img img{
+    width: 180px;
+    margin-top: -40px;
+    margin-bottom: -50px;
+}
+
+button{
+    background-color: $primary-color;
+    color: $Optional-color;
+    outline: none;
+}
+.container__installApp{
+    margin-right: 15px;
+}
+.navbar-collapse{
+    text-align: center;
+}
+
 a {
     margin-right: 15px;
     text-decoration: none;
-    padding: 10px;
 }
 a.active {
     border-bottom: 3px solid $primary-color;

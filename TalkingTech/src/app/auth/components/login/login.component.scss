@@ -25,6 +25,12 @@ $New-color: #301f70;
     justify-content: center;
     margin-top: 20px;
 }
+.container__form{
+    width: 100%;
+    mat-form-field{
+        width: 100%;
+    }
+}
 //container login
 
 // carousel 
@@ -73,6 +79,7 @@ mat-error{
 
 //btn login//
 .button__submit{
+    outline: none;
     font-size: 20px;
     margin-bottom: 15px;
     margin-top: 20px;
