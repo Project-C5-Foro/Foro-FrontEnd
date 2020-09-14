@@ -35,7 +35,6 @@
                         <div class="col-8">
                           <mat-form-field>
                             <input placeholder="Email" formControlName="email" matInput type="email">
-                            <mat-error class="alert alert-danger" role="alert" >Prueba de alerta</mat-error>
                           </mat-form-field>
                         </div>
                     </div>
@@ -44,7 +43,6 @@
                             <mat-form-field>
                                 <mat-label>Enter your password</mat-label>
                                 <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
-                                <mat-error class="alert alert-danger" role="alert" >Prueba de alerta</mat-error>
                                 <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
