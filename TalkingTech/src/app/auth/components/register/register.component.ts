@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
-import { ValidatorsPassword } from './../../../utils/validators-password';
+import { ValidatorsPassword } from '@utils/validators-password';
 
 @Component({
   selector: 'app-register',
