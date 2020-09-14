@@ -1,0 +1,43 @@
+$primary-color: #47cfac;
+$Secondary-color: #ccd1d9 ;
+$Third-color: #434953 ;
+$Optional-color: #ffffff ;
+$Four-color: #301f70;
+
+
+.container__404{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+}
+img{
+    max-width: 700px;
+}
+mat-card{
+    background-color: $Secondary-color;
+}
+p{
+    color: $Four-color;
+}
+a{
+    text-decoration: underline;
+    background-color: $primary-color;
+    color: $Optional-color;
+}
+
+// Mediaaa
+
+@media screen and (max-width:768px){
+
+}
+@media screen and (max-width:480px){
+    img{
+        max-width: 350px;
+    }
+}
+@media screen and (max-width:320px){
+    img{
+        max-width: 300px;
+    }
+  }
