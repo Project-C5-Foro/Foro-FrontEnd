@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="col-12 col-lg-6">
-            <form [formGroup]="form">
+            <form [formGroup]="form" (ngSubmit)="login($event)">
                 <div class="container__form">
                     <h3>Inicia Sesión</h3>
                     <div class="row">
@@ -42,7 +42,7 @@
                         <div class="col-8">
                             <mat-form-field>
                                 <mat-label>Enter your password</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
+                                <input  [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
                                 <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
@@ -56,7 +56,7 @@
                             <button class="button__submit" [disabled]="form.invalid" mat-raised-button type="submit">Iniciar sesión</button>
                         </div>
                         <div class="register">
-                            <span>¿No tines cuenta? <a routerLink="/register">Registrate ¡Ya!</a></span>
+                            <span>¿No tines cuenta? <a routerLink="/register">Registrate ¡Aqui!</a></span>
                         </div>
                 </div>
             </form>

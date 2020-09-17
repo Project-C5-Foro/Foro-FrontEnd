@@ -27,13 +27,13 @@
         </div>
       </div>
     </div>
-    <form [formGroup]="form" class="col-12 col-lg-6">
+    <form [formGroup]="form" (ngSubmit)="register($event)" class="col-12 col-lg-6">
       <div class="container__form">
             <h3>Regístrate</h3>
             <div class="row">
                 <div class="col-8 input__text">
                   <mat-form-field class="input">
-                    <input placeholder="Name" formControlName="name" matInput type="text">
+                    <input placeholder="User name" formControlName="username" matInput type="text">
                   </mat-form-field>
                   <div *ngIf="nameField.errors && nameField.dirty || nameField.touched">
                     <mat-error  *ngIf="nameField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
@@ -42,13 +42,24 @@
                 </div>
             </div>
             <div class="row">
+              <div class="col-8 input__text">
+                <mat-form-field>
+                  <input placeholder="First name" formControlName="firstname" matInput type="text">
+                </mat-form-field>
+                <div *ngIf="firstnameField.errors && firstnameField.dirty || firstnameField.touched">
+                  <mat-error  *ngIf="firstnameField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
+                  <mat-error  *ngIf="firstnameField.hasError('pattern')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
+                </div>
+              </div>
+          </div>
+            <div class="row">
                 <div class="col-8 input__text">
                   <mat-form-field>
-                    <input placeholder="Last name" formControlName="lastname" matInput type="text">
+                    <input placeholder="Last name" formControlName="last_name" matInput type="text">
                   </mat-form-field>
                   <div *ngIf="lastnameField.errors && lastnameField.dirty || lastnameField.touched">
                     <mat-error  *ngIf="lastnameField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                    <mat-error  *ngIf="lastnameField.hasError('lastname')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
+                    <mat-error  *ngIf="lastnameField.hasError('pattern')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
                   </div>
                 </div>
             </div>
@@ -71,15 +82,24 @@
                       <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
+                      <mat-hint align="start"><strong>Minimo 6 caracteres 1 letra mayuscula 1 numero</strong> </mat-hint>
                   </mat-form-field>
                 <div *ngIf="passwordField.errors && passwordField.dirty || passwordField.touched">
-                  <p  *ngIf="passwordField.hasError('password_invalid')" class="alert alert-secondary" role="alert" >
-                    Este campo requiere: <br>
-                    Minino 6 caracteres <br>
-                    Minimo 1 letra mayuscula <br>
-                    Minimo 1 Numero
-                  </p>
                   <mat-error  *ngIf="passwordField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8 input__text">
+                  <mat-form-field>
+                      <mat-label>Confirm your password</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password_confirmation" matInput>
+                      <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                  </mat-form-field>
+                <div *ngIf="confirmpasswordField.errors && confirmpasswordField.dirty || confirmpasswordField.touched">
+                  <mat-error  *ngIf="confirmpasswordField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
                 </div>
               </div>
             </div>
