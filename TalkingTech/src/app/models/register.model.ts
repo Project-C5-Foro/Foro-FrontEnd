@@ -34,4 +34,5 @@ export interface LoginResponse {
         posts_offered: number;
         reputation: number;
     };
+    access_token: string;
 }

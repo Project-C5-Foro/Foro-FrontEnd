@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
   hide = true;
+  toShow = true;
 
   constructor(
     private router: Router,
@@ -32,8 +33,10 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(value.email, value.password)
       .subscribe( data => {
         console.log(data);
-        this.router.navigate(['/home']);
-      }, () => {
+        this.toShow = false;
+        this.router.navigate(['/home', this.toShow]);
+      }, error => {
+        console.error(error);
         alert('Contraseña o correo incorrecto');
       });
     }else{

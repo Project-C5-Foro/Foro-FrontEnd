@@ -1,0 +1,40 @@
+$primary-color: #47cfac;
+$Secondary-color: #ccd1d9 ;
+$Third-color: #434953 ;
+$Optional-color: #ffffff ;
+$Four-color: #301f70;
+
+button{
+    outline: none;
+}
+.container__btn{
+    display: flex;
+    justify-content: flex-end;
+}
+.container__btn button{
+    background-color: $primary-color;
+    color: $Optional-color;
+}
+.modal-footer button{
+    margin: 3px 3px;
+}
+.btn__create--post {
+    background-color: $Optional-color;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+.btn__create--post:hover {
+    background-color: $primary-color;
+    color: $Optional-color;
+    border: 1px solid $Secondary-color;
+}
+.btn__close{
+    background-color: $Optional-color;
+    color: $Third-color;
+    border: 1px solid $Third-color;
+}
+.btn__close:hover {
+    background-color: $Third-color;
+    color: $Optional-color;
+    border: 1px solid $Secondary-color;
+}

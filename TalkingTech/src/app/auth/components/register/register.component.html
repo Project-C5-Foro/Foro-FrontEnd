@@ -82,7 +82,7 @@
                       <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
-                      <mat-hint align="start"><strong>Minimo 6 caracteres 1 letra mayuscula 1 numero</strong> </mat-hint>
+                      <mat-hint align="start"><strong>Minimo 8 caracteres 1 letra mayuscula 1 numero</strong> </mat-hint>
                   </mat-form-field>
                 <div *ngIf="passwordField.errors && passwordField.dirty || passwordField.touched">
                   <mat-error  *ngIf="passwordField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
