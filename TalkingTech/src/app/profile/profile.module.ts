@@ -7,6 +7,8 @@ import { SharedModule } from '@shared/shared.module';
 
 import { MaterialModule } from '@material/material.module';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 @NgModule({
   declarations: [ProfileComponent],
@@ -14,7 +16,8 @@ import { MaterialModule } from '@material/material.module';
     CommonModule,
     ProfileRoutingModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    NgxSpinnerModule
   ]
 })
 export class ProfileModule { }
