@@ -1,7 +1,17 @@
 <div class="container">
     <p>home works!</p>
+
+    <mat-form-field>
+      <mat-label>Escoge una Categoria</mat-label>
+      <mat-select>
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let categorys of category" [value]="category">{{categorys?.category}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
     <div class="container__btn">
-        <button mat-raised-button data-toggle="modal" data-target="#ModalCreatePost" *ngIf="user?.is_staff"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
+        <button mat-raised-button data-toggle="modal" data-target="#ModalCreatePost" *ngIf="user?.is_client"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
     </div>
 </div>
 

@@ -20,7 +20,8 @@
       "@utils/*":["src/app/utils/*"],
       "@material/*":["src/app/material/*"],
       "@core/*":["src/app/core/*"],
-      "@shared/*":["src/app/shared/*"]
+      "@shared/*":["src/app/shared/*"],
+      "@models/*":["src/app/models/*"]
     }
   }
 }

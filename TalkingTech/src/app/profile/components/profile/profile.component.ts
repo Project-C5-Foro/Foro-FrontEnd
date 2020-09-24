@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginResponse } from './../../../models/register.model';
+import { LoginResponse } from '@models/register.model';
 
 import { AuthService } from '@core/auth.service';
+import { CategoryService } from '@core/category.service';
+
 import { ValidatorsPassword } from '@utils/validators-password';
+
+import { Category, CategoryResponse } from '@models/category.model';
 
 @Component({
   selector: 'app-profile',
@@ -16,8 +19,11 @@ export class ProfileComponent implements OnInit {
 
   form: FormGroup;
   user: LoginResponse;
+  category: Category;
+  categorys: CategoryResponse [] = [];
 
   constructor(
+    private categoryService: CategoryService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
   ) {
@@ -36,6 +42,7 @@ export class ProfileComponent implements OnInit {
       console.log(value);
       this.authService.createUser(value)
       .subscribe(() => {
+        console.log('exito');
         alert('Registro exitoso');
       }, error => {
         console.error(error);
@@ -45,6 +52,24 @@ export class ProfileComponent implements OnInit {
       alert('Registro Fallo');
     }
   }
+
+  createCategory(event: Event): void{
+    event.preventDefault();
+    this.categoryService.createCategory(this.category)
+    .subscribe(() => {
+      console.log('exito');
+    }, err => {
+      console.error(err);
+    });
+  }
+
+  fetchCategorys(): void{
+    this.categoryService.getCategory()
+    .subscribe( category => {
+      this.categorys = category;
+    });
+  }
+
   private buildForm(): void {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
@@ -53,11 +78,15 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), ValidatorsPassword.isPasswordValid]],
       password_confirmation: ['', [Validators.required, Validators.minLength(6), ValidatorsPassword.isPasswordValid]],
+      category: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]]
     });
   }
 
   get nameField(): AbstractControl{
     return this.form.get('username');
+  }
+  get categoryField(): AbstractControl{
+    return this.form.get('category');
   }
 
 }

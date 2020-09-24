@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { LoginResponse } from './../../../models/register.model';
+import { LoginResponse } from '@models/register.model';
+import { CategoryResponse, Category } from '@models/category.model';
+
+import { CategoryService } from '@core/category.service';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +13,11 @@ import { LoginResponse } from './../../../models/register.model';
 export class HomeComponent implements OnInit {
 
   user: LoginResponse;
+  category: CategoryResponse [] = [];
 
-  constructor() { }
+  constructor(
+    private categoryService: CategoryService
+  ) { }
 
   ngOnInit(): void {
     let userData: any = sessionStorage.getItem('user');
@@ -19,6 +25,14 @@ export class HomeComponent implements OnInit {
     if (userData){
       this.user = userData.user;
     }
+    this.fetchCategorys();
+  }
+
+  fetchCategorys(): void{
+    this.categoryService.getCategory()
+    .subscribe( category => {
+      this.category = category;
+    });
   }
 
 }

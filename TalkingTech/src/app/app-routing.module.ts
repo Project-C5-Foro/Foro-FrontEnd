@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 
+import { AdminGuard } from '@utils/admin.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -18,6 +20,7 @@ const routes: Routes = [
       },
       {
         path: 'profile',
+        canActivate: [AdminGuard] ,
         loadChildren: () => import ('./profile/profile.module').then(m => m.ProfileModule)
       },
     ]

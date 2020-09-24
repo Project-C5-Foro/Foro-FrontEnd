@@ -37,13 +37,10 @@ export class RegisterComponent implements OnInit {
     event.preventDefault();
     if ( this.form.valid ) {
       const value = this.form.value;
-      console.log(value);
       this.authService.createUser(value)
-      .subscribe(data => {
-        console.log(data);
+      .subscribe(() => {
         this.registerSwal.fire();
-      }, error => {
-        console.error(error);
+      }, () => {
         this.errorSwal.fire();
       });
     }else{

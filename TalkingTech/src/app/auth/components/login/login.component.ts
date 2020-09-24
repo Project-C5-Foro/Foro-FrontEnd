@@ -4,7 +4,7 @@ import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { AuthService } from './../../../core/auth.service';
+import { AuthService } from '@core/auth.service';
 
 @Component({
   selector: 'app-login',

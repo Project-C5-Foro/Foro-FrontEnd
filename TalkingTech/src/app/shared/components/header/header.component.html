@@ -12,12 +12,12 @@
             <a class="nav-link" routerLink="home" routerLinkActive="active">Inicio<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="login" routerLinkActive="active" *ngIf="!user?.is_staff">Iniciar sesión<span class="sr-only">(current)</span></a>
-                <a class="nav-link" routerLink="profile" routerLinkActive="active" *ngIf="user?.is_staff">Mi Perfil<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="login" routerLinkActive="active" *ngIf="!user?.is_client">Iniciar sesión<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="profile" routerLinkActive="active" *ngIf="user?.is_client">Mi Perfil<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" routerLink="register" routerLinkActive="active" *ngIf="!user?.is_staff" >Regístrate<span class="sr-only">(current)</span></a>
-                <a class="nav-link Signoff"  routerLinkActive="active" (click)="clear()" *ngIf="user?.is_staff">Cerrar Sesión<span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="register" routerLinkActive="active" *ngIf="!user?.is_client" >Regístrate<span class="sr-only">(current)</span></a>
+                <a class="nav-link Signoff"  routerLinkActive="active" (click)="clear()" *ngIf="user?.is_client">Cerrar Sesión<span class="sr-only">(current)</span></a>
             </li>
         </ul>
     </div>
