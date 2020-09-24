@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginResponse } from './../../../models/register.model';
 
 import { AuthService } from '@core/auth.service';
 import { ValidatorsPassword } from '@utils/validators-password';
@@ -14,6 +15,7 @@ import { ValidatorsPassword } from '@utils/validators-password';
 export class ProfileComponent implements OnInit {
 
   form: FormGroup;
+  user: LoginResponse;
 
   constructor(
     private authService: AuthService,
@@ -23,6 +25,9 @@ export class ProfileComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    let userData: any = sessionStorage.getItem('user');
+    userData = JSON.parse(userData);
+    this.user = userData.user;
   }
   register(event: Event): void{
     event.preventDefault();

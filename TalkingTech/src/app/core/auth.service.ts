@@ -24,6 +24,7 @@ export class AuthService {
     .pipe(
       tap(( data: LoginResponse) => {
         const token = data.access_token;
+        sessionStorage.setItem('user', JSON.stringify(data));
         this.token.saveToken(token);
       })
     );

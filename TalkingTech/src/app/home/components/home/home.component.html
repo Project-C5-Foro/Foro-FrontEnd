@@ -1,7 +1,7 @@
 <div class="container">
     <p>home works!</p>
     <div class="container__btn">
-        <button mat-raised-button data-toggle="modal" data-target="#ModalCreatePost"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
+        <button mat-raised-button data-toggle="modal" data-target="#ModalCreatePost" *ngIf="user?.is_staff"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
     </div>
 </div>
 

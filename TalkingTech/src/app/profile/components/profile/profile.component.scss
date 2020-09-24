@@ -12,6 +12,8 @@ $Four-color: #301f70;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 .container__img--profile img{
     border: 1px solid $Four-color;
