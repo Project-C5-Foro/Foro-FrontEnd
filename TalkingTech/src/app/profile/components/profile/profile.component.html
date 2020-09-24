@@ -1,40 +1,130 @@
 <div class="container">
     <mat-card>
     <div class="row">
-        <div class="col-12 col-md-4 col-lg-4">
+        <div class="col-12 col-md-4 col-lg-4 container__img--profile">
             <img src="./../../../../assets/img__profile/Astronauta.png" alt="">
         </div>
         <div class="col-12 col-md-8 col-lg-8">
                 <div class="row">
-                    <div class="col-12 col-md-6 col-lg-6">
+                    <div class="col-12 col-md-6 col-lg-6 container__text">
                         <mat-card-title>
                             Mi Perfil
                         </mat-card-title>
-                        <mat-divider></mat-divider>
                         <mat-card-content>
-                            <h3>User Name</h3>
-                            <mat-divider></mat-divider>
-                            <h3>First Name</h3>
-                            <mat-divider></mat-divider>
-                            <h3>Last Name</h3>
-                            <mat-divider></mat-divider>
-                            <h3>Email</h3>
-                            <mat-divider></mat-divider>
+                            <mat-list>
+                                <mat-list-item>User Name</mat-list-item>
+                                <mat-divider></mat-divider>
+                                <mat-list-item>First Name</mat-list-item>
+                                <mat-divider></mat-divider>
+                                <mat-list-item>Last Name</mat-list-item>
+                                <mat-divider></mat-divider>
+                                <mat-list-item>Email</mat-list-item>
+                                <mat-divider></mat-divider>
+                            </mat-list>
                         </mat-card-content>
                     </div>
-                    <div class="col-12 col-md-2 col-lg-2">
-                        <h3>My post</h3>
-                        <button mat-raised-button>Add post</button>
+                    <div class="col-12 col-md-2 col-lg-2 container__create--buttons">
+                        <div class="create__buttons">
+                            <button mat-raised-button data-toggle="modal" data-target="#ModalCreatePost">Crear Post</button>
+                            <button mat-raised-button data-toggle="modal" data-target="#ModalCreateUser">Crear Usuario</button>
+                            <button mat-raised-button data-toggle="modal" data-target="#ModalCreateCategory">Crear Categoria</button>
+                        </div>
                     </div>
                 </div>
         </div>
     </div>
 </mat-card>
 </div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Mis Post</h2>
+            <mat-list>
+                <mat-list-item>Item 1</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Item 2</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>Item 3</mat-list-item>
+              </mat-list>
+        </div>
+    </div>
+</div>
 
+<!-- modal -->
+<div class="modal fade" id="ModalCreatePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Crear Post</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+          <button class="btn__close" type="button" mat-raised-button data-dismiss="modal">Cerrar</button>
+          <button class="btn__create" type="button" mat-raised-button data-dismiss="modal"> Crear post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- modal -->
+<!-- modal -->
+<div class="modal fade" id="ModalCreateUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Crear Usuario</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form" (ngSubmit)="register($event)" class="col-12 col-lg-6">
+                <div class="col-8 input__text">
+                    <mat-form-field class="input">
+                      <input placeholder="User name" formControlName="username" matInput type="text">
+                      <mat-error  *ngIf="nameField.hasError('required')" >Prueba de alerta 1 img</mat-error>
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn__close" type="button" mat-raised-button data-dismiss="modal">Cerrar</button>
+          <button class="btn__create" type="submit" mat-raised-button data-dismiss="modal"> Crear Usuario</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- modal -->
+<!-- modal -->
+<div class="modal fade" id="ModalCreateCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Crear Categoria</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button class="btn__close" type="button" mat-raised-button data-dismiss="modal">Cerrar</button>
+          <button class="btn__create" type="button" mat-raised-button data-dismiss="modal"> Crear categoria</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- modal -->
+<!-- spinner -->
 <ngx-spinner
 color="#47cfac"
 type = "ball-scale-ripple-multiple"
 >
     <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
+<!-- spinner -->

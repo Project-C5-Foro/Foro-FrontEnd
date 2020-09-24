@@ -8,8 +8,12 @@ $Four-color: #301f70;
     margin-top: 50px;
     margin-bottom: 50px;
 }
-
-img{
+.container__img--profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container__img--profile img{
     border: 1px solid $Four-color;
     border-radius: 5px;
 }
@@ -18,7 +22,73 @@ mat-card{
     background-color: $Secondary-color;
     padding: 20px;
 }
+mat-card-title{
+    margin-top: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
 
 button{
     outline: none;
 }
+.container__create--buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+.create__buttons button {
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: $primary-color;
+    color: $Four-color;
+}
+.btn__create {
+    margin: 10px;
+    background-color: $Four-color;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+.btn__create:hover {
+    background-color: $primary-color;
+    color: $Four-color;
+    border: 1px solid $Four-color;
+}
+.btn__close {
+    background-color: $Third-color;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+.btn__close:hover{
+    background-color: $primary-color;
+    color: $Third-color;
+    border: 1px solid $Third-color;
+}
+
+//media
+@media screen and (max-width:767px){
+    .container__create--buttons {
+        margin-top: 30px;
+        margin-left: 0px;
+    }
+}
+@media screen and (max-width:480px){
+    .container__create--buttons {
+        margin-top: 30px;
+        margin-left: 0px;
+    }
+    mat-card-title{
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+}
+@media screen and (max-width:320px){
+    .container__create--buttons {
+        margin-top: 30px;
+        margin-left: 0px;
+    }
+    .container__text{
+        margin-top: 20px
+    }
+  }
+//media

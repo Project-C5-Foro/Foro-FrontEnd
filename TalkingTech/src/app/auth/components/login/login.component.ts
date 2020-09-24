@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -16,6 +17,8 @@ export class LoginComponent implements OnInit {
   hide = true;
   toShow = true;
 
+  @ViewChild('loginSwal') private loginSwal: SwalComponent;
+  @ViewChild('ErrorSwal') private ErrorSwal: SwalComponent;
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -33,14 +36,12 @@ export class LoginComponent implements OnInit {
       this.authService.loginUser(value.email, value.password)
       .subscribe( data => {
         console.log(data);
-        this.toShow = false;
-        this.router.navigate(['/home', this.toShow]);
-      }, error => {
-        console.error(error);
-        alert('Contraseña o correo incorrecto');
+        this.loginSwal.fire();
+      }, () => {
+        this.ErrorSwal.fire();
       });
     }else{
-      alert('Contraseña o correo incorrecto x2');
+      this.ErrorSwal.fire();
     }
   }
 
@@ -51,4 +52,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  successfullogin(): void{
+    this.router.navigate(['/home']);
+  }
 }

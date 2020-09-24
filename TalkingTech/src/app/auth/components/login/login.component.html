@@ -43,7 +43,7 @@
                             <mat-form-field>
                                 <mat-label>Enter your password</mat-label>
                                 <input  [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
-                                <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                <button type="button" class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
                             </mat-form-field>
@@ -69,3 +69,18 @@ type = "ball-scale-ripple-multiple"
 >
     <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
+<swal
+  #loginSwal
+  title="Login exitoso"
+  text="Ahora podras disfrutar de lo mejor"
+  icon="success"
+  [focusCancel]="true"  
+  (confirm)="successfullogin()">
+</swal>
+<swal
+  #ErrorSwal
+  title="Upps!! Algo salio mal"
+  text="Revisa tu correo o contraseña"
+  icon="error"
+  [focusCancel]="true">
+</swal>

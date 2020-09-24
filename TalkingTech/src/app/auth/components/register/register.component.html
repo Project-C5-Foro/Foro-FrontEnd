@@ -33,83 +33,74 @@
             <div class="row">
                 <div class="col-8 input__text">
                   <mat-form-field class="input">
-                    <input placeholder="User name" formControlName="username" matInput type="text">
+                    <mat-label>User name</mat-label>
+                    <input placeholder="Ingresa un sobre nombre Unico" formControlName="username" matInput type="text">
+                    <mat-error  *ngIf="nameField.hasError('required')" >Este campo es <strong>requerido</strong> </mat-error>
+                    <mat-error  *ngIf="nameField.hasError('pattern')" >Solo puedes ingresar letras </mat-error>
                   </mat-form-field>
-                  <div *ngIf="nameField.errors && nameField.dirty || nameField.touched">
-                    <mat-error  *ngIf="nameField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                    <mat-error  *ngIf="nameField.hasError('pattern')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
-                  </div>
                 </div>
             </div>
             <div class="row">
               <div class="col-8 input__text">
                 <mat-form-field>
-                  <input placeholder="First name" formControlName="firstname" matInput type="text">
+                  <mat-label>First name</mat-label>
+                  <input placeholder="Ingresa tu nombre" formControlName="first_name" matInput type="text">
+                  <mat-error  *ngIf="firstnameField.hasError('required')" role="alert" >Este campo es <strong>requerido</strong> </mat-error>
+                  <mat-error  *ngIf="firstnameField.hasError('pattern')" role="alert" >Solo puedes ingresar letras</mat-error>
                 </mat-form-field>
-                <div *ngIf="firstnameField.errors && firstnameField.dirty || firstnameField.touched">
-                  <mat-error  *ngIf="firstnameField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                  <mat-error  *ngIf="firstnameField.hasError('pattern')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
-                </div>
               </div>
           </div>
             <div class="row">
                 <div class="col-8 input__text">
                   <mat-form-field>
-                    <input placeholder="Last name" formControlName="last_name" matInput type="text">
+                    <mat-label>Last name</mat-label>
+                    <input placeholder="Ingresa tu apellido" formControlName="last_name" matInput type="text">
+                    <mat-error  *ngIf="lastnameField.hasError('required')" role="alert" >Este campo es <strong>requerido</strong> </mat-error>
+                    <mat-error  *ngIf="lastnameField.hasError('pattern')" role="alert" >Solo puedes ingresar letras</mat-error>
                   </mat-form-field>
-                  <div *ngIf="lastnameField.errors && lastnameField.dirty || lastnameField.touched">
-                    <mat-error  *ngIf="lastnameField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                    <mat-error  *ngIf="lastnameField.hasError('pattern')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
-                  </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-8 input__text">
                   <mat-form-field>
-                    <input placeholder="Email" formControlName="email" matInput type="email">
+                    <mat-label>Email</mat-label>
+                    <input placeholder="ejemplo@ejemplo.com" formControlName="email" matInput type="email">
+                    <mat-hint align="start"><strong>Exp: ejemplo@ejemplo.com</strong> </mat-hint>
+                    <mat-error  *ngIf="emailField.hasError('required')" role="alert" >Este campo es <strong>requerido</strong> </mat-error>
                   </mat-form-field>
-                  <div *ngIf="emailField.errors && emailField.dirty || emailField.touched">
-                    <mat-error  *ngIf="emailField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                    <mat-error  *ngIf="emailField.hasError('email')" class="alert alert-danger" role="alert" >Prueba de alerta 2</mat-error>
-                  </div>
                 </div>
             </div>
             <div class="row">
               <div class="col-8 input__text">
                   <mat-form-field>
                       <mat-label>Enter your password</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
-                      <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <input placeholder="*********" matInput [type]="hide ? 'password' : 'text'" formControlName="password" matInput>
+                      <button type="button" class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
                       <mat-hint align="start"><strong>Minimo 8 caracteres 1 letra mayuscula 1 numero</strong> </mat-hint>
+                      <mat-error  *ngIf="passwordField.hasError('required')" role="alert" >Este campo es <strong>requerido</strong> </mat-error>
                   </mat-form-field>
-                <div *ngIf="passwordField.errors && passwordField.dirty || passwordField.touched">
-                  <mat-error  *ngIf="passwordField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                </div>
               </div>
             </div>
             <div class="row">
               <div class="col-8 input__text">
                   <mat-form-field>
                       <mat-label>Confirm your password</mat-label>
-                      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password_confirmation" matInput>
-                      <button class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <input placeholder="*********" matInput [type]="hide ? 'password' : 'text'" formControlName="password_confirmation" matInput>
+                      <button type="button" class="button__auth" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
+                      <mat-error  *ngIf="confirmpasswordField.hasError('required')">Este campo es <strong>requerido</strong> </mat-error>
                   </mat-form-field>
-                <div *ngIf="confirmpasswordField.errors && confirmpasswordField.dirty || confirmpasswordField.touched">
-                  <mat-error  *ngIf="confirmpasswordField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1</mat-error>
-                </div>
               </div>
             </div>
             <div class="row">
               <div class="col-8 input__file">
-                  <input formControlName="image"  type="file">
-                  <div *ngIf="imageField.errors && imageField.dirty || imageField.touched">
-                    <mat-error  *ngIf="imageField.hasError('required')" class="alert alert-danger" role="alert" >Prueba de alerta 1 img</mat-error>
-                    <mat-error  *ngIf="imageField.hasError('image_invalid')" class="alert alert-danger" role="alert" >Prueba de alerta 2 img</mat-error>
-                  </div>
+                  <label for="addImage">Agrega tu foto o imagen favorita</label>
+                  <input formControlName="image" id="addImage" type="file">
+                  <mat-error  *ngIf="imageField.hasError('required')" role="alert" >Este campo es <strong>requerido</strong> </mat-error>
+                  <mat-error  *ngIf="imageField.hasError('image_invalid')" role="alert" >Solo puedes ingresar formatos(.jpg|.jpeg|.png|.gif)</mat-error>
               </div>
           </div>
             <button class="button__submit" [disabled]="form.invalid" mat-raised-button type="submit">Regístrate</button>
@@ -123,3 +114,19 @@ type = "ball-scale-ripple-multiple"
 >
     <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
+
+<swal
+  #loginSwal
+  title="Registro exitoso"
+  text="Ahora inicia sesión para disfrutar de lo mejor"
+  icon="success"
+  [focusCancel]="true"  
+  (confirm)="successfullregister()">
+</swal>
+<swal
+  #errorSwal
+  title="Upps!! Algo salio mal"
+  text="Revisa los datos ingresados algo salio mal. Intenta mas tarde"
+  icon="error"
+  [focusCancel]="true">
+</swal>

@@ -9,12 +9,13 @@ import { RegisterComponent } from './components/register/register.component';
 
 import { MaterialModule } from '@material/material.module';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     AuthRoutingModule,
@@ -22,7 +23,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AuthRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    SweetAlert2Module
   ],
 })
 export class AuthModule { }

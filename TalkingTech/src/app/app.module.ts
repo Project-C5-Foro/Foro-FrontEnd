@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SharedModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     {
