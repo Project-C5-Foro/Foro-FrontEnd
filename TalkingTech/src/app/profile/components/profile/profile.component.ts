@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { LoginResponse } from '@models/register.model';
 
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+
+import { LoginResponse } from '@models/register.model';
 import { AuthService } from '@core/auth.service';
 import { CategoryService } from '@core/category.service';
-
 import { ValidatorsPassword } from '@utils/validators-password';
-
 import { Category, CategoryResponse } from '@models/category.model';
 
 @Component({
@@ -19,9 +19,11 @@ export class ProfileComponent implements OnInit {
 
   form: FormGroup;
   user: LoginResponse;
-  category: Category;
+  category: Category = {category: '' };
   categories: CategoryResponse [] = [];
 
+  @ViewChild('createSwal') private createSwal: SwalComponent;
+  @ViewChild('errorSwal') private errorSwal: SwalComponent;
   constructor(
     private categoryService: CategoryService,
     private authService: AuthService,
@@ -36,7 +38,7 @@ export class ProfileComponent implements OnInit {
     this.user = userData.user;
     this.fetchCategories();
   }
-
+// categories
   fetchCategories(): void{
     this.categoryService.getCategory()
     .subscribe( categories => {
@@ -48,12 +50,13 @@ export class ProfileComponent implements OnInit {
     event.preventDefault();
     this.categoryService.createCategory(this.category)
     .subscribe(() => {
-      console.log('exito');
-    }, err => {
-      console.error(err);
+      this.createSwal.fire();
+    }, () => {
+      this.errorSwal.fire();
     });
   }
-
+// categories
+// register
   register(event: Event): void{
     event.preventDefault();
     if ( this.form.valid ) {
@@ -61,17 +64,16 @@ export class ProfileComponent implements OnInit {
       console.log(value);
       this.authService.createUser(value)
       .subscribe(() => {
-        console.log('exito');
-        alert('Registro exitoso');
+        this.createSwal.fire();
       }, error => {
         console.error(error);
-        alert('Registro Fallo');
+        this.errorSwal.fire();
       });
     }else{
-      alert('Registro Fallo');
+      this.errorSwal.fire();
     }
   }
-
+// register
   private buildForm(): void {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],
@@ -80,7 +82,7 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), ValidatorsPassword.isPasswordValid]],
       password_confirmation: ['', [Validators.required, Validators.minLength(6), ValidatorsPassword.isPasswordValid]],
-      category: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]]
+      category: ['', [Validators.required, Validators.pattern(/^[a-zA-Z- ]+$/)]]
     });
   }
 

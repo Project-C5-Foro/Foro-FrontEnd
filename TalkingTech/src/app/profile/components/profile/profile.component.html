@@ -60,6 +60,8 @@
                   {{category?.category}}  {{category?.id}}
                   <button mat-raised-button class="btn__edit">Editar <mat-icon>create</mat-icon>
                   </button>
+                  <button mat-raised-button class="btn__clear">Eliminar <mat-icon>clear</mat-icon>
+                  </button>
                 </mat-list-item>
                 <mat-divider></mat-divider>
               </div>
@@ -128,14 +130,13 @@
           </button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="form" class="col-12 col-lg-6">
+          <div class="col-12 col-lg-6">
             <div class="col-8 input__text">
                 <mat-form-field class="input">
-                  <input placeholder="Crear Categoria" formControlName="category" matInput type="text">
-                  <mat-error  *ngIf="categoryField.hasError('required')" >Prueba de alerta 1 img</mat-error>
+                  <input placeholder="Crear Categoria" [(ngModel)]="category.category" matInput type="text">
                 </mat-form-field>
             </div>
-        </form>
+          </div>
         </div>
         <div class="modal-footer">
           <button class="btn__close" type="button" mat-raised-button data-dismiss="modal">Cerrar</button>
@@ -153,3 +154,20 @@ type = "ball-scale-ripple-multiple"
     <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
 <!-- spinner -->
+
+<!-- alerts -->
+<swal
+  #createSwal
+  title="Login exitoso"
+  text="Ahora podras disfrutar de lo mejor"
+  icon="success"
+  [focusCancel]="true" >
+</swal>
+<swal
+  #errorSwal
+  title="Upps!! Algo salio mal"
+  text="Revisa tu correo o contraseña"
+  icon="error"
+  [focusCancel]="true">
+</swal>
+<!-- alerts -->

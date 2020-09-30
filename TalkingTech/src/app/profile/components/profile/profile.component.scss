@@ -51,7 +51,14 @@ button{
     background-color: $primary-color;
     color: $Four-color;
 }
+mat-list-item button {
+    margin-right: 10px;
+}
 .btn__edit{
+    background-color: $primary-color;
+    color: $Four-color;
+}
+.btn__clear{
     background-color: $primary-color;
     color: $Four-color;
 }

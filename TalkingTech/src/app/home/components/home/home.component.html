@@ -8,6 +8,14 @@
         <mat-option *ngFor="let categorys of category" [value]="category">{{categorys?.category}}  {{categorys?.id}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <div>
+      <h2>Posts creados</h2>
+      <div *ngFor="let post of posts">
+        <p> {{post?.title}} </p>
+        <p> {{post?.category}} </p>
+        <p> {{post?.post}} </p>
+      </div>
+    </div>
 
 
     <div class="container__btn">
