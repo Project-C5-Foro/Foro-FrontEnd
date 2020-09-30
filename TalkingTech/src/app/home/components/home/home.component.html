@@ -13,8 +13,9 @@
       <div *ngFor="let post of posts">
         <p> {{post?.title}} </p>
         <p> {{post?.category}} </p>
-        <p> {{post?.post}} </p>
-        <a  mat-raised-button routerLink="detail">Ver detalle</a>
+        <p> {{post?.id}} </p>
+        <p> {{post?.post}} </p> 
+        <a  mat-raised-button [routerLink]="['/home', post?.id]">Ver detalle</a>
       </div>
     </div>
 

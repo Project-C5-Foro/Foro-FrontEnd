@@ -29,4 +29,7 @@ export class PostsService {
       map((response: any) => response.results as PostsResponse[])
     );
   }
+  getPostsDetail(id: PostsResponse): Observable<PostsResponse>{
+    return this.http.get<PostsResponse>(`${environment.API_Tt}/posts/${id}/`);
+  }
 }
