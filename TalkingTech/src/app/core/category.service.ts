@@ -39,4 +39,8 @@ export class CategoryService {
   // editCategory(id: string): Observable<CategoryResponse> {
   //   return this.http.put<CategoryResponse>(`${environment.API_Tt}/categories/${id}/`)
   // }
+  delateCaetgory(id: CategoryResponse): Observable<CategoryResponse>{
+    console.log(id);
+    return this.http.delete<CategoryResponse>(`${environment.API_Tt}/categories/${id}/`);
+  }
 }

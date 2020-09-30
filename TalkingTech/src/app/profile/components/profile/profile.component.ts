@@ -50,9 +50,18 @@ export class ProfileComponent implements OnInit {
     event.preventDefault();
     this.categoryService.createCategory(this.category)
     .subscribe(() => {
+      this.fetchCategories();
       this.createSwal.fire();
     }, () => {
       this.errorSwal.fire();
+    });
+  }
+  deleteCategory(id: CategoryResponse): void{
+    this.categoryService.delateCaetgory(id)
+    .subscribe(rta => {
+      this.fetchCategories();
+    }, err => {
+      console.error(err);
     });
   }
 // categories
@@ -82,15 +91,10 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6), ValidatorsPassword.isPasswordValid]],
       password_confirmation: ['', [Validators.required, Validators.minLength(6), ValidatorsPassword.isPasswordValid]],
-      category: ['', [Validators.required, Validators.pattern(/^[a-zA-Z- ]+$/)]]
     });
   }
 
   get nameField(): AbstractControl{
     return this.form.get('username');
   }
-  get categoryField(): AbstractControl{
-    return this.form.get('category');
-  }
-
 }
