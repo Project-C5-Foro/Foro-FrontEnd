@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from './../../environments/environment';
 
+import { TokenService } from './token.service';
+
 import { Category, CategoryResponse} from '@models/category.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,6 +16,7 @@ import { map } from 'rxjs/operators';
 export class CategoryService {
 
   constructor(
+    private tokenService: TokenService,
     private http: HttpClient
   ) { }
 
@@ -22,9 +25,17 @@ export class CategoryService {
   }
 
   getCategory(): Observable<CategoryResponse[]>{
-    return this.http.get(`${environment.API_Tt}/categories/`)
+    const token = this.tokenService.getToken();
+    return this.http.get(`${environment.API_Tt}/categories/`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+     })
     .pipe(
       map((response: any) => response.results as CategoryResponse[])
     );
   }
+  // editCategory(id: string): Observable<CategoryResponse> {
+  //   return this.http.put<CategoryResponse>(`${environment.API_Tt}/categories/${id}/`)
+  // }
 }

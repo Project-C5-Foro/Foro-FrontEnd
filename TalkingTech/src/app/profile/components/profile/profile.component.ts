@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   form: FormGroup;
   user: LoginResponse;
   category: Category;
-  categorys: CategoryResponse [] = [];
+  categories: CategoryResponse [] = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -34,7 +34,26 @@ export class ProfileComponent implements OnInit {
     let userData: any = sessionStorage.getItem('user');
     userData = JSON.parse(userData);
     this.user = userData.user;
+    this.fetchCategories();
   }
+
+  fetchCategories(): void{
+    this.categoryService.getCategory()
+    .subscribe( categories => {
+      this.categories = categories;
+    });
+  }
+
+  createCategory(event: Event): void{
+    event.preventDefault();
+    this.categoryService.createCategory(this.category)
+    .subscribe(() => {
+      console.log('exito');
+    }, err => {
+      console.error(err);
+    });
+  }
+
   register(event: Event): void{
     event.preventDefault();
     if ( this.form.valid ) {
@@ -51,23 +70,6 @@ export class ProfileComponent implements OnInit {
     }else{
       alert('Registro Fallo');
     }
-  }
-
-  createCategory(event: Event): void{
-    event.preventDefault();
-    this.categoryService.createCategory(this.category)
-    .subscribe(() => {
-      console.log('exito');
-    }, err => {
-      console.error(err);
-    });
-  }
-
-  fetchCategorys(): void{
-    this.categoryService.getCategory()
-    .subscribe( category => {
-      this.categorys = category;
-    });
   }
 
   private buildForm(): void {

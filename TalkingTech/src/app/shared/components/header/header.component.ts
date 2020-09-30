@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
   clear(): void{
     sessionStorage.clear();
     localStorage.clear();
+    this.user = null;
     this.route.navigate(['/home']);
   }
 }

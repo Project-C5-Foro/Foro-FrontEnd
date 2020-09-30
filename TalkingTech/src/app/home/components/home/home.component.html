@@ -5,7 +5,7 @@
       <mat-label>Escoge una Categoria</mat-label>
       <mat-select>
         <mat-option>None</mat-option>
-        <mat-option *ngFor="let categorys of category" [value]="category">{{categorys?.category}}</mat-option>
+        <mat-option *ngFor="let categorys of category" [value]="category">{{categorys?.category}}  {{categorys?.id}}</mat-option>
       </mat-select>
     </mat-form-field>
 

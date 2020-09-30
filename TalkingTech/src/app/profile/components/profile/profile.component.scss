@@ -33,6 +33,12 @@ mat-card-title{
 button{
     outline: none;
 }
+.list__categories{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
 .container__create--buttons{
     display: flex;
     justify-content: center;
@@ -42,6 +48,10 @@ button{
 .create__buttons button {
     margin-top: 5px;
     margin-left: 5px;
+    background-color: $primary-color;
+    color: $Four-color;
+}
+.btn__edit{
     background-color: $primary-color;
     color: $Four-color;
 }
