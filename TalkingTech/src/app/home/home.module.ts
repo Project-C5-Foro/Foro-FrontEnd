@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './components/home/home.component';
@@ -18,7 +19,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HomeRoutingModule,
     SharedModule,
     MaterialModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

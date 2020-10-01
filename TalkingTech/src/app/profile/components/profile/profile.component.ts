@@ -1,14 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
 
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
+import { Category, CategoryResponse } from '@models/category.model';
 import { LoginResponse } from '@models/register.model';
+
 import { AuthService } from '@core/auth.service';
 import { CategoryService } from '@core/category.service';
+import { PostsService } from '@core/posts.service';
 import { ValidatorsPassword } from '@utils/validators-password';
-import { Category, CategoryResponse } from '@models/category.model';
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +23,7 @@ import { Category, CategoryResponse } from '@models/category.model';
 export class ProfileComponent implements OnInit {
 
   form: FormGroup;
+  formPost: FormGroup;
   user: LoginResponse;
   category: Category = {category: '' };
   categories: CategoryResponse [] = [];
@@ -28,16 +34,25 @@ export class ProfileComponent implements OnInit {
     private categoryService: CategoryService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private postsService: PostsService
   ) {
     this.buildForm();
+    this.buildFormPost();
    }
+    myControl = new FormControl();
+    filteredOptions: Observable<string[]>;
 
   ngOnInit(): void {
     let userData: any = sessionStorage.getItem('user');
     userData = JSON.parse(userData);
     this.user = userData.user;
     this.fetchCategories();
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
   }
+
 // categories
   fetchCategories(): void{
     this.categoryService.getCategory()
@@ -54,6 +69,8 @@ export class ProfileComponent implements OnInit {
       this.createSwal.fire();
     }, () => {
       this.errorSwal.fire();
+    }, () => {
+      this.errorSwal.fire();
     });
   }
   deleteCategory(id: CategoryResponse): void{
@@ -64,7 +81,12 @@ export class ProfileComponent implements OnInit {
       console.error(err);
     });
   }
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.fetchCategories.prototype(option => option.toLowerCase().indexOf(filterValue) === 0);
+  }
 // categories
+
 // register
   register(event: Event): void{
     event.preventDefault();
@@ -83,6 +105,33 @@ export class ProfileComponent implements OnInit {
     }
   }
 // register
+
+// post
+createPost(event: Event): void{
+  event.preventDefault();
+  if ( this.form.valid ) {
+    const value = this.form.value;
+    this.postsService.createPost(value)
+    .subscribe(() => {
+      console.log('exito');
+    }, err => {
+      console.error(err);
+    });
+  }else{
+    console.error('err');
+  }
+}
+
+private buildFormPost(): void {
+  this.formPost = this.formBuilder.group({
+    username: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    title: ['', [Validators.required]],
+    category: ['', [Validators.required]],
+    post: ['', [Validators.required]]
+  });
+}
+// post
   private buildForm(): void {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required, Validators.pattern(/^[a-zA-Z ]+$/)]],

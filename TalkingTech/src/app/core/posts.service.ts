@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { TokenService } from './token.service';
 
 import { environment } from './../../environments/environment';
-import { PostsResponse } from '@models/posts.model';
+import { PostsResponse, PostCreate } from '@models/posts.model';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +31,9 @@ export class PostsService {
   }
   getPostsDetail(id: PostsResponse): Observable<PostsResponse>{
     return this.http.get<PostsResponse>(`${environment.API_Tt}/posts/${id}/`);
+  }
+  createPost(data: PostCreate): Observable<PostsResponse>{
+    console.log(data);
+    return this.http.post<PostsResponse>(`${environment.API_Tt}/posts/`, data);
   }
 }
