@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-12 col-md-2 col-lg-2 container__create--buttons">
                         <div class="create__buttons">
-                            <button mat-raised-button data-toggle="modal" data-target="#ModalCreatePost">Crear Post</button>
+                            <button mat-raised-button (click)="navigateCreate()">Crear Post</button>
                             <button mat-raised-button data-toggle="modal" data-target="#ModalCreateUser" *ngIf="user?.is_superuser" >Crear Usuario</button>
                             <button mat-raised-button data-toggle="modal" data-target="#ModalCreateCategory" *ngIf="user?.is_superuser" >Crear Categoria</button>
                         </div>
@@ -69,70 +69,6 @@
         </div>
     </div>
 </div>
-
-<!-- modal -->
-<div class="modal fade" id="ModalCreatePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title" id="exampleModalLabel">Crear Post</h2>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="formPost">
-            <div>
-              <mat-form-field>
-                <mat-label> {{user?.username}} </mat-label>
-                <input placeholder="{{user?.username}}" formControlName="username" matInput type="text">
-                <mat-hint align="start"><strong>Ingresa tu nombre de Usuario:</strong> {{user?.username}} </mat-hint>
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                <mat-label> {{user?.email}} </mat-label>
-                <input placeholder="{{user?.email}}" formControlName="email" matInput type="email">
-                <mat-hint align="start"><strong>Ingresa tu Email:</strong> {{user?.email}} </mat-hint>
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                <mat-label>Titulo Post</mat-label>
-                <input placeholder="Titulo de tu post" formControlName="title" matInput type="text">
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                <input type="text"
-                       placeholder="Categoria de tu post"
-                       aria-label="Number"
-                       matInput
-                       [matAutocomplete]="auto"
-                       formControlName="category">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                  <mat-option *ngFor="let category of categories"[value]="category">
-                    {{category?.category}}
-                  </mat-option>
-                </mat-autocomplete>
-              </mat-form-field>
-            </div>
-            <div>
-              <mat-form-field>
-                <mat-label>Ingresa tu post</mat-label>
-                <textarea matInput formControlName="post" placeholder="Aca podras escribir el mejor post"></textarea>
-              </mat-form-field>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button class="btn__close" type="button" mat-raised-button data-dismiss="modal">Cerrar</button>
-          <button class="btn__create" type="button" mat-raised-button data-dismiss="modal"> Crear post</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- modal -->
 <!-- modal -->
 <div class="modal fade" id="ModalCreateUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">

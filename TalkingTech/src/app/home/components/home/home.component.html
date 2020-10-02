@@ -5,25 +5,34 @@
       <mat-label>Escoge una Categoria</mat-label>
       <mat-select>
         <mat-option>None</mat-option>
-        <mat-option *ngFor="let categorys of category" [value]="category">{{categorys?.category}}</mat-option>
+        <mat-option *ngFor="let categorys of category" [value]="category">{{categorys?.category}} </mat-option>
       </mat-select>
     </mat-form-field>
-    <div>
+
+    <input type="text" name="filterpost" [(ngModel)]="filterpost">
       <h2>Posts creados</h2>
-      <div *ngFor="let post of posts">
-        <p> {{post?.title}} </p>
-        <p> {{post?.category.category}} </p>
-        <p> {{post?.user.username}} </p>
-        <p> {{post?.id}} </p>
-        <p> {{post?.post}} </p> 
-        <a  mat-raised-button [routerLink]="['/home', post?.id]">Ver detalle</a>
-      </div>
+
+    <div class="row">
+      <mat-card class="col-12 col-md-5 col-lg-5" *ngFor="let post of posts | filterPipe:filterpost">
+        <mat-card-header>
+          <img mat-card-avatar src="./../../../../assets/img__profile/Astronauta.png" alt="">
+          <mat-card-title>{{post?.title | slice:0:30}}...</mat-card-title>
+          <mat-card-subtitle>{{post?.user.username}} {{post?.category.category}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content> 
+          <p>{{post?.post | slice:0:300}}...</p>
+          <mat-card-actions>
+            <a  mat-raised-button class="btn__detail" [routerLink]="['/home', post?.id]">Ver detalle</a>
+          </mat-card-actions>
+        </mat-card-content>
+      </mat-card>
     </div>
 
 
     <div class="container__btn">
-        <button mat-raised-button data-toggle="modal" data-target="#ModalCreatePost" *ngIf="user?.is_client"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
+        <button mat-raised-button (click)="navigateCreate()" *ngIf="user?.is_client"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
     </div>
+
 </div>
 
 <ngx-spinner
@@ -33,74 +42,3 @@ type = "ball-scale-ripple-multiple"
     <p style="font-size: 20px; color: white">Loading...</p>
 </ngx-spinner>
 
-<!-- modal -->
-<div class="modal fade" id="ModalCreatePost" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title" id="exampleModalLabel">Crear Post</h2>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="container">
-            <div class="row">
-              <div class="col-12">
-                <form [formGroup]="form">
-                  <div class="row">
-                    <div class="col-12">
-                      <mat-form-field>
-                        <mat-label> {{user?.username}} </mat-label>
-                        <input placeholder="{{user?.username}}" formControlName="username" matInput type="text">
-                        <mat-hint align="start"><strong>Ingresa tu nombre de Usuario:</strong> {{user?.username}} </mat-hint>
-                      </mat-form-field>
-                    </div>
-                  </div>
-                  <div>
-                    <mat-form-field>
-                      <mat-label> {{user?.email}} </mat-label>
-                      <input placeholder="{{user?.email}}" formControlName="email" matInput type="email">
-                      <mat-hint align="start"><strong>Ingresa tu Email:</strong> {{user?.email}} </mat-hint>
-                    </mat-form-field>
-                  </div>
-                  <div>
-                    <mat-form-field>
-                      <mat-label>Titulo Post</mat-label>
-                      <input placeholder="Titulo de tu post" formControlName="title" matInput type="text">
-                    </mat-form-field>
-                  </div>
-                  <div>
-                    <mat-form-field>
-                      <input type="text"
-                             placeholder="Categoria de tu post"
-                             aria-label="Number"
-                             matInput
-                             [matAutocomplete]="auto"
-                             formControlName="category">
-                      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                        <mat-option *ngFor="let categorys of category" [value]="category">
-                          {{categorys?.category}}
-                        </mat-option>
-                      </mat-autocomplete>
-                    </mat-form-field>
-                  </div>
-                  <div>
-                    <mat-form-field>
-                      <mat-label>Ingresa tu post</mat-label>
-                      <textarea matInput formControlName="post" placeholder="Aca podras escribir el mejor post"></textarea>
-                    </mat-form-field>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn__close" type="button" mat-raised-button data-dismiss="modal">Cerrar</button>
-          <button class="btn__create--post" type="submit" mat-raised-button (click)="createPost($event)"> Crear post</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- modal -->

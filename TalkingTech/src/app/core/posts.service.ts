@@ -20,7 +20,7 @@ export class PostsService {
 
   getAllPosts(): Observable<PostsResponse[]>{
     const token = this.tokenService.getToken();
-    return this.http.get<PostsResponse[]>(`${environment.API_Tt}/posts/`, {
+    return this.http.get<PostsResponse[]>(`${environment.API_Tt}/postsl/`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -30,7 +30,7 @@ export class PostsService {
     );
   }
   getPostsDetail(id: PostsResponse): Observable<PostsResponse>{
-    return this.http.get<PostsResponse>(`${environment.API_Tt}/posts/${id}/`);
+    return this.http.get<PostsResponse>(`${environment.API_Tt}/postsl/${id}/`);
   }
   createPost(data: PostCreate): Observable<PostsResponse>{
     console.log(data);

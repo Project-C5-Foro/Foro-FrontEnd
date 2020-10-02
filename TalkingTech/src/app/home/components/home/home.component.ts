@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { LoginResponse } from '@models/register.model';
 import { CategoryResponse } from '@models/category.model';
@@ -23,14 +23,12 @@ export class HomeComponent implements OnInit {
   user: LoginResponse;
   category: CategoryResponse [] = [];
   posts: PostsResponse [] = [];
-  form: FormGroup;
-
+  filterpost = '';
   constructor(
     private categoryService: CategoryService,
     private postsService: PostsService,
-    private formBuilder: FormBuilder,
+    private router: Router,
   ) {
-    this.buildForm();
   }
 
   ngOnInit(): void {
@@ -59,34 +57,11 @@ export class HomeComponent implements OnInit {
       this.posts = posts;
     });
   }
+  navigateCreate(): void{
+    this.router.navigate(['home/create']);
+  }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.fetchCategorys.prototype(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
-
-  createPost(event: Event): void{
-    event.preventDefault();
-    if ( this.form.valid ) {
-      const value = this.form.value;
-      this.postsService.createPost(value)
-      .subscribe(() => {
-        console.log('exito');
-      }, err => {
-        console.error(err);
-      });
-    }else{
-      console.error('err');
-    }
-  }
-
-  private buildForm(): void {
-    this.form = this.formBuilder.group({
-      username: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      title: ['', [Validators.required]],
-      category: ['', [Validators.required]],
-      post: ['', [Validators.required]]
-    });
-  }
-
 }

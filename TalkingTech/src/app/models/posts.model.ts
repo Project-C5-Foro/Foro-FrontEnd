@@ -23,7 +23,7 @@ export interface PostsResponse {
     visited: string;
 }
 export interface PostCreate {
-    username: string;
+    user: string;
     email: string;
     title: string;
     post: string;

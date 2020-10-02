@@ -1,0 +1,41 @@
+$primary-color: #47cfac;
+$Secondary-color: #ccd1d9 ;
+$Third-color: #434953 ;
+$Optional-color: #ffffff ;
+$Four-color: #301f70;
+
+.container__card{
+    padding: 20px;
+}
+mat-card{
+    padding: 40px;
+}
+mat-card-title{
+    text-align: center;
+}
+.container__form{
+    width: 100%;
+    mat-form-field{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+.container__btn{
+    text-align: center;
+}
+.badge-category{
+    background-color: $primary-color;
+    color: $Optional-color;
+    border: 1px solid $Secondary-color;
+    font-size: 13px;
+}
+.btn__create--post {
+    background-color: $Optional-color;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+.btn__create--post:hover {
+    background-color: $primary-color;
+    color: $Optional-color;
+    border: 1px solid $Secondary-color;
+}
