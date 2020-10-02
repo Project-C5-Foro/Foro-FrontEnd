@@ -5,6 +5,8 @@ import { HomeComponent } from './components/home/home.component';
 import { PostsDetailComponent } from './components/posts-detail/posts-detail.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 
+import { AdminGuard } from '@utils/admin.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -12,6 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'create',
+    canActivate: [AdminGuard] ,
     component: CreatePostComponent
   },
   {

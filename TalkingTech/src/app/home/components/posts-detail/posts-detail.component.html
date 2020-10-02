@@ -1,7 +1,24 @@
-<div>
-    <p>{{postDetail?.title}}</p>
-    <p>{{postDetail?.user.username}} </p>
-    <p>{{postDetail?.id}}</p>
-    <p> {{postDetail?.category.category}} </p>
-    <p> {{postDetail?.post}} </p>
+<div class="container">
+    <div class="row">
+        <div class="col btn__return">
+            <a mat-raised-button routerLink="/home">Volver</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col container__post--detail">
+            <mat-card>
+                <mat-card-header>
+                    <img mat-card-avatar src="./../../../../assets/img__profile/Astronauta.png" alt="">
+                    <mat-card-subtitle><span>Titulo del post </span></mat-card-subtitle>
+                    <mat-card-title>{{postDetail?.title}}</mat-card-title>
+                    <mat-card-subtitle>Creador del Post <br> <span>{{postDetail?.user.username}}</span> </mat-card-subtitle>
+                    <mat-card-subtitle>Categoria del Post <br> <span>{{postDetail?.category.category}} </span></mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <h2>Post</h2>
+                    <p> {{postDetail?.post}}  </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>

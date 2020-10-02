@@ -1,0 +1,36 @@
+$primary-color: #47cfac;
+$Secondary-color: #ccd1d9 ;
+$Third-color: #434953 ;
+$Optional-color: #ffffff ;
+$Four-color: #301f70;
+
+mat-card{
+    padding: 40px;
+    background-color: $Secondary-color;
+}
+mat-card img {
+    border: 1px solid $Four-color;
+}
+mat-card span {
+    color: $Four-color;
+}
+mat-card h2 {
+    text-align: center;
+}
+.container__post--detail{
+    padding: 30px;
+}
+.btn__return{
+    margin: 20px;
+}
+.btn__return a{
+    background-color: $Optional-color;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+.btn__return a:hover{
+    background-color: $primary-color;
+    color: $Optional-color;
+    border: 1px solid $Optional-color;
+    text-decoration: none;
+}
