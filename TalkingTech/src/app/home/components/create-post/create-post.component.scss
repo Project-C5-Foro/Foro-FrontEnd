@@ -29,6 +29,20 @@ mat-card-title{
     border: 1px solid $Secondary-color;
     font-size: 13px;
 }
+.btn__return{
+    margin: 20px;
+}
+.btn__return a{
+    background-color: $Optional-color;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+}
+.btn__return a:hover{
+    background-color: $primary-color;
+    color: $Optional-color;
+    border: 1px solid $Optional-color;
+    text-decoration: none;
+}
 .btn__create--post {
     background-color: $Optional-color;
     color: $primary-color;
@@ -38,4 +52,7 @@ mat-card-title{
     background-color: $primary-color;
     color: $Optional-color;
     border: 1px solid $Secondary-color;
+}
+button{
+    outline: none;
 }

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 import { PostsResponse } from '@models/posts.model';
 import { CategoryResponse } from '@models/category.model';
@@ -22,7 +25,12 @@ export class CreatePostComponent implements OnInit {
   categories: CategoryResponse [] = [];
   form: FormGroup;
 
+  @ViewChild('creatPostSwal') private creatPostSwal: SwalComponent;
+  @ViewChild('errorCreateSwal') private errorCreateSwal: SwalComponent;
+  @ViewChild('errorIncompleteSwal') private errorIncompleteSwal: SwalComponent;
+
   constructor(
+    private router: Router,
     private postsService: PostsService,
     private formBuilder: FormBuilder,
     private categoryService: CategoryService
@@ -63,12 +71,12 @@ export class CreatePostComponent implements OnInit {
       const value = this.form.value;
       this.postsService.createPost(value)
       .subscribe(() => {
-        console.log('exito');
-      }, err => {
-        console.error(err);
+        this.creatPostSwal.fire();
+      }, () => {
+        this.errorCreateSwal.fire();
       });
     }else{
-      console.error('err');
+      this.errorIncompleteSwal.fire();
     }
   }
 
@@ -80,5 +88,8 @@ export class CreatePostComponent implements OnInit {
       category: ['', [Validators.required]],
       post: ['', [Validators.required]]
     });
+  }
+  returnHome(): void{
+    this.router.navigate(['/home']);
   }
 }

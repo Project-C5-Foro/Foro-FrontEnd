@@ -1,5 +1,10 @@
 <div class="container">
     <div class="row">
+        <div class="col btn__return">
+            <a mat-raised-button routerLink="/home">Volver</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12 container__card">
             <mat-card>
                 <mat-card-title>
@@ -42,4 +47,33 @@
         </div>
     </div>
 </div>
+
+<swal
+  #creatPostSwal
+  title="Creacion exitoso"
+  text="Ahora podras ver tu post, recuerda compartir tu post para que mas gente lo vea"
+  icon="success"
+  [focusCancel]="true"  
+  (confirm)="returnHome()">
+</swal>
+<swal
+  #errorCreateSwal
+  title="Upps!! Algo salio mal"
+  text="Revisa los datos ingresados algo salio mal. Si no funciona intenta mas tarde"
+  icon="error"
+  [focusCancel]="true">
+</swal>
+<swal
+  #errorIncompleteSwal
+  title="Upps!! Algo salio mal"
+  text="Debes ingresar los campos correspondientes"
+  icon="error"
+  [focusCancel]="true">
+</swal>
+<ngx-spinner
+color="#47cfac"
+type = "ball-scale-ripple-multiple"
+>
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
 
