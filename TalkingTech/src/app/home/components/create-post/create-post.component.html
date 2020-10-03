@@ -13,16 +13,6 @@
                 <mat-card-content>
                     <form [formGroup]="form" class="container__form">
                         <mat-form-field>
-                                <mat-label> Ingresa tu Id de usuario </mat-label>
-                                <input placeholder="{{user?.id}}"formControlName="user" matInput type="text">
-                                <mat-hint align="start"><strong>Ingresa tu Id de usuario que es:</strong> {{user?.id}} </mat-hint>
-                        </mat-form-field>
-                        <mat-form-field>
-                            <mat-label> Ingresa tu Email </mat-label>
-                            <input placeholder="{{user?.email}}" formControlName="email" matInput type="email">
-                            <mat-hint align="start"><strong>Ingresa tu Email:</strong> {{user?.email}} </mat-hint>
-                        </mat-form-field>
-                        <mat-form-field>
                             <mat-label>Titulo Post</mat-label>
                             <input placeholder="Titulo de tu post" formControlName="title" matInput type="text">
                         </mat-form-field>

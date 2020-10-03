@@ -11,9 +11,19 @@ mat-card{
 button{
     outline: none;
 }
+.container__categories span{
+    font-size: 16px;
+    margin-top: 5px;
+    background-color: $Secondary-color;
+    color: $Four-color;
+}
 .container__btn{
-    display: flex;
     justify-content: flex-end;
+    display: flex;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
 }
 .container__btn button{
     background-color: $primary-color;

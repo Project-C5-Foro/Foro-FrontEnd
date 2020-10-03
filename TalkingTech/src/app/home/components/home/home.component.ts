@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
   category: CategoryResponse [] = [];
   posts: PostsResponse [] = [];
   filterpost = '';
+  categories: string[] = [];
   constructor(
     private categoryService: CategoryService,
     private postsService: PostsService,
@@ -62,6 +63,6 @@ export class HomeComponent implements OnInit {
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.fetchCategorys.prototype(option => option.toLowerCase().indexOf(filterValue) === 0);
+    return this.categories.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 }

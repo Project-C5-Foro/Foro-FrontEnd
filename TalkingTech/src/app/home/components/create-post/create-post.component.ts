@@ -29,6 +29,9 @@ export class CreatePostComponent implements OnInit {
   @ViewChild('errorCreateSwal') private errorCreateSwal: SwalComponent;
   @ViewChild('errorIncompleteSwal') private errorIncompleteSwal: SwalComponent;
 
+  myControl = new FormControl();
+  filteredOptions: Observable<string[]>;
+
   constructor(
     private router: Router,
     private postsService: PostsService,
@@ -37,8 +40,6 @@ export class CreatePostComponent implements OnInit {
   ) {
     this.buildForm();
   }
-  myControl = new FormControl();
-  filteredOptions: Observable<string[]>;
 
   ngOnInit(): void {
     let userData: any = sessionStorage.getItem('user');
@@ -69,6 +70,8 @@ export class CreatePostComponent implements OnInit {
     event.preventDefault();
     if ( this.form.valid ) {
       const value = this.form.value;
+      value.user = this.user.id;
+      value.email = this.user.email;
       this.postsService.createPost(value)
       .subscribe(() => {
         this.creatPostSwal.fire();
@@ -82,8 +85,6 @@ export class CreatePostComponent implements OnInit {
 
   private buildForm(): void {
     this.form = this.formBuilder.group({
-      user: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       title: ['', [Validators.required]],
       category: ['', [Validators.required]],
       post: ['', [Validators.required]]

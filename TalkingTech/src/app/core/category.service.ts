@@ -35,9 +35,20 @@ export class CategoryService {
       map((response: any) => response.results as CategoryResponse[])
     );
   }
-  // editCategory(id: string): Observable<CategoryResponse> {
-  //   return this.http.put<CategoryResponse>(`${environment.API_Tt}/categories/${id}/`)
-  // }
+  getCategoryId(id: string): Observable<CategoryResponse>{
+    const token = this.tokenService.getToken();
+    return this.http.get<CategoryResponse>(`${environment.API_Tt}/categories/${id}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+     });
+  }
+
+  editCategory(id: number, changes: Partial<CategoryResponse>): Observable<CategoryResponse>{
+    const token = this.tokenService.getToken();
+    return this.http.put<CategoryResponse>(`${environment.API_Tt}/categories/${id}/`, changes);
+  }
+
   delateCaetgory(id: CategoryResponse): Observable<CategoryResponse>{
     console.log(id);
     return this.http.delete<CategoryResponse>(`${environment.API_Tt}/categories/${id}/`);
