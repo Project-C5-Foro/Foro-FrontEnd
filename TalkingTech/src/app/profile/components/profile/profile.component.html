@@ -44,11 +44,11 @@
     <div class="row">
         <div class="col-12 col-md-6 col-lg-6">
             <h2>Mis Post</h2>
-            <div *ngFor="let post of posts">
-              <mat-list>
-                <mat-list-item>{{post?.post}}</mat-list-item>
+            <div>
+              <!-- <mat-list>
+                <mat-list-item>{{user?.email}}</mat-list-item>
                 <mat-divider></mat-divider>
-            </mat-list>
+              </mat-list> -->
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-6" *ngIf="user?.is_superuser">

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Register, RegisterResponse, LoginResponse } from './../models/register.model';
+import { Register, RegisterResponse, LoginResponse, UserResponse } from './../models/register.model';
 import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -31,5 +31,8 @@ export class AuthService {
   }
   createUser(data: Register): Observable<RegisterResponse> {
     return this.http.post<RegisterResponse>(`${environment.API_Tt}/users/signup/`, data);
+  }
+  infoUser(username: UserResponse): Observable<UserResponse[]>{
+    return this.http.get<UserResponse[]>(`${environment.API_Tt}/users/username/`);
   }
 }

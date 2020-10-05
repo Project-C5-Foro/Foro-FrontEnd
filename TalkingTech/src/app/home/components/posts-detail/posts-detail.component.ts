@@ -28,6 +28,6 @@ export class PostsDetailComponent implements OnInit {
     this.postsService.getPostsDetail(id)
     .subscribe(postDetail => {
       this.postDetail = postDetail;
-    })
+    });
   }
 }

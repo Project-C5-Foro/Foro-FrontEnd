@@ -3,6 +3,19 @@ $Secondary-color: #ccd1d9 ;
 $Third-color: #434953 ;
 $Optional-color: #ffffff ;
 $Four-color: #301f70;
+
+.container__posts{
+    border: 2px solid $primary-color;
+    justify-content: center;
+}
+h2{
+    text-align: center;
+    font-weight: bold;
+    color: $Optional-color;
+    background-color: $Third-color;
+    border: 2px solid $primary-color;
+    margin: 15px 15px;
+}
 mat-card{
     display: flex;
     margin: 10px;

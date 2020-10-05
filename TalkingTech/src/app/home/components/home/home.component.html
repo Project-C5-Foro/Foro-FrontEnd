@@ -1,27 +1,50 @@
 <div class="container">
-    <p>home works!</p>
-
-    <h2>Posts creados</h2>
+  <div class="row">
+    <div class="col-12">
+      <h2>Posts recomendados</h2>
+    </div>
+  </div>
+  <div class="row container__posts">
+    <mat-card class="col-12 col-md-5 col-lg-5" *ngFor="let postRecommended of recommended">
+      <mat-card-header>
+        <img mat-card-avatar src="./../../../../assets/img__profile/Astronauta.png" alt="">
+        <mat-card-title>{{postRecommended?.title | slice:0:30}}...</mat-card-title>
+        <mat-card-subtitle>{{postRecommended?.post_id.user}} <br> <span class="badge" style=" font-size: 14px; color: #301f70;">{{postRecommended?.post_id.category}}</span></mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content> 
+        <p>{{postRecommended?.post_id.post | slice:0:300}}...</p>
+        <mat-card-actions>
+          <a  mat-raised-button class="btn__detail" [routerLink]="['/home', postRecommended?.id]">Ver detalle</a>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <h2>Posts creados</h2>
+    </div>
+  </div>
     <div class="row">
       <div class="col-12 col-lg-12">
+
         <form class="example-form">
           <mat-form-field class="example-full-width">
-            <mat-label>Busca tu catogria</mat-label>
-            <input matInput placeholder="Escribe tu categoria" type="text" name="filterpost" [(ngModel)]="filterpost">
+            <input type="text"
+                   placeholder="Busca tu categoria"
+                   aria-label="Number"
+                   matInput
+                   name="filterpost" [(ngModel)]="filterpost"
+                   [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let categorys of category" >
+                {{categorys?.category}}
+              </mat-option>
+            </mat-autocomplete>
           </mat-form-field>
         </form>
       </div>
-      <div class="col-12">
-        <h3>Categorias Creadas</h3>
-        <div class="container__categories">
-          <div *ngFor="let categorys of category">
-            <span class="badge">{{categorys?.category}}</span>
-          </div>
-        </div>
-      </div>
     </div>
-
-    <div class="row">
+    <div class="row container__posts">
       <mat-card class="col-12 col-md-5 col-lg-5" *ngFor="let post of posts | filterPipe:filterpost">
         <mat-card-header>
           <img mat-card-avatar src="./../../../../assets/img__profile/Astronauta.png" alt="">
@@ -37,7 +60,7 @@
       </mat-card>
     </div>
     <div class="container__btn">
-        <button mat-raised-button (click)="navigateCreate()" *ngIf="user?.is_client"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
+      <button mat-raised-button (click)="navigateCreate()" *ngIf="user?.is_client"> Crea tu post <mat-icon>add_circle_outline</mat-icon> </button>
     </div>
 
 </div>

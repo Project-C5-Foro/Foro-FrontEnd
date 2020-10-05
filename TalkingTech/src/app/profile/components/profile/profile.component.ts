@@ -1,18 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validator, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { FormControl, Validators } from '@angular/forms';
+
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 import { Category, CategoryResponse } from '@models/category.model';
-import { LoginResponse } from '@models/register.model';
+import { LoginResponse, UserResponse } from '@models/register.model';
 import { PostsResponse } from '@models/posts.model';
 
 import { CategoryService } from '@core/category.service';
 import { PostsService } from '@core/posts.service';
+import { AuthService } from '@core/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +21,8 @@ import { PostsService } from '@core/posts.service';
 })
 export class ProfileComponent implements OnInit {
 
+  userResponse: UserResponse;
+  userDataResponse: UserResponse [] = [];
   user: LoginResponse;
   category: Category = {category: '' };
   categories: CategoryResponse [] = [];
@@ -31,27 +33,21 @@ export class ProfileComponent implements OnInit {
   @ViewChild('createSwal') private createSwal: SwalComponent;
   @ViewChild('errorSwal') private errorSwal: SwalComponent;
   constructor(
+    private authService: AuthService,
     private categoryService: CategoryService,
     private router: Router,
     private postsService: PostsService,
-    private activatedRoute: ActivatedRoute
   ) {
     this.categoryEdit = new FormControl('', [
       Validators.required
     ]);
    }
-    myControl = new FormControl();
-    filteredOptions: Observable<string[]>;
 
   ngOnInit(): void {
     let userData: any = sessionStorage.getItem('user');
     userData = JSON.parse(userData);
     this.user = userData.user;
     this.fetchCategories();
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
   }
 
 // categories
@@ -100,10 +96,6 @@ export class ProfileComponent implements OnInit {
       this.errorSwal.fire();
     });
   }
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.fetchCategories.prototype(option => option.toLowerCase().indexOf(filterValue) === 0);
-  }
 // categories
 
 // register
@@ -113,14 +105,15 @@ export class ProfileComponent implements OnInit {
 // register
 
 // post
-fetchPosts(): void{
-  this.postsService.getAllPosts()
-  .subscribe( posts => {
-    this.posts = posts;
-  });
-  }
   navigateCreate(): void{
     this.router.navigate(['home/create']);
+  }
+  fetchUserPost(user): void {
+    // const user = this.user.username;
+    this.authService.infoUser(user)
+    .subscribe( userDataResponse => {
+      this.userDataResponse = userDataResponse;
+    });
   }
 // post
 }

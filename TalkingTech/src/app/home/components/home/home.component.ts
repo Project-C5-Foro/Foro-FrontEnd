@@ -9,6 +9,7 @@ import { CategoryResponse } from '@models/category.model';
 import { PostsResponse } from '@models/posts.model';
 import { CategoryService } from '@core/category.service';
 import { PostsService } from '@core/posts.service';
+import { Recommended } from '@models/posts-recommended.model';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
   posts: PostsResponse [] = [];
   filterpost = '';
   categories: string[] = [];
+  recommended: Recommended [] = [];
   constructor(
     private categoryService: CategoryService,
     private postsService: PostsService,
@@ -44,6 +46,7 @@ export class HomeComponent implements OnInit {
     );
     this.fetchCategorys();
     this.fetchPosts();
+    this.fetchPostsRecommended();
   }
 
   fetchCategorys(): void{
@@ -56,6 +59,12 @@ export class HomeComponent implements OnInit {
     this.postsService.getAllPosts()
     .subscribe( posts => {
       this.posts = posts;
+    });
+  }
+  fetchPostsRecommended(): void{
+    this.postsService.getAllPostRecommended()
+    .subscribe(recommended => {
+      this.recommended = recommended;
     });
   }
   navigateCreate(): void{

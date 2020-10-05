@@ -7,6 +7,7 @@ import { TokenService } from './token.service';
 
 import { environment } from './../../environments/environment';
 import { PostsResponse, PostCreate } from '@models/posts.model';
+import { Recommended } from '@models/posts-recommended.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,16 @@ export class PostsService {
   createPost(data: PostCreate): Observable<PostsResponse>{
     console.log(data);
     return this.http.post<PostsResponse>(`${environment.API_Tt}/posts/`, data);
+  }
+  getAllPostRecommended(): Observable<Recommended[]> {
+    const token = this.tokenService.getToken();
+    return this.http.get<Recommended[]>(`${environment.API_Tt}/rankeds/`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+     })
+    .pipe(
+      map((response: any) => response.results as Recommended[])
+    );
   }
 }
