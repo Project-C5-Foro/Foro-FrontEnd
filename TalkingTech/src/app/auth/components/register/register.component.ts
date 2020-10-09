@@ -39,7 +39,8 @@ export class RegisterComponent implements OnInit {
       const value = this.form.value;
       this.authService.createUser(value)
       .subscribe(() => {
-        this.registerSwal.fire();
+        // this.registerSwal.fire();
+        this.router.navigateByUrl('/login');
       }, () => {
         this.errorSwal.fire();
       });
