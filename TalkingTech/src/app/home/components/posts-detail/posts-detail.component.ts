@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { PostsService } from '@core/posts.service';
-import { PostsResponse } from '@models/posts.model';
+import { PostsResponse, PostDetailResponse } from '@models/posts.model';
 
 @Component({
   selector: 'app-posts-detail',
@@ -11,7 +11,7 @@ import { PostsResponse } from '@models/posts.model';
 })
 export class PostsDetailComponent implements OnInit {
 
-  postDetail: PostsResponse;
+  postDetail: PostDetailResponse;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +24,7 @@ export class PostsDetailComponent implements OnInit {
       this.fetchPost(id);
     });
   }
-  fetchPost(id: PostsResponse): void{
+  fetchPost(id: PostDetailResponse): void{
     this.postsService.getPostsDetail(id)
     .subscribe(postDetail => {
       this.postDetail = postDetail;

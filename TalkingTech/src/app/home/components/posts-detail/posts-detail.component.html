@@ -10,13 +10,13 @@
                 <mat-card-header>
                     <img mat-card-avatar src="./../../../../assets/img__profile/Astronauta.png" alt="">
                     <mat-card-subtitle><span>Titulo del post </span></mat-card-subtitle>
-                    <mat-card-title>{{postDetail?.title}}</mat-card-title>
-                    <mat-card-subtitle>Creador del Post <br> <span>{{postDetail?.user.username}}</span> </mat-card-subtitle>
-                    <mat-card-subtitle>Categoria del Post <br> <span>{{postDetail?.category.category}} </span></mat-card-subtitle>
+                    <mat-card-title>{{postDetail?.post.title}}</mat-card-title>
+                    <mat-card-subtitle>Creador del Post <br> <span>{{postDetail?.post.user.username}}</span> </mat-card-subtitle>
+                    <mat-card-subtitle>Categoria del Post <br> <span>{{postDetail?.post.category.category}} </span></mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
                     <h2>Post</h2>
-                    <p> {{postDetail?.post}}  </p>
+                    <p> {{postDetail?.post.post}}  </p>
                 </mat-card-content>
             </mat-card>
         </div>

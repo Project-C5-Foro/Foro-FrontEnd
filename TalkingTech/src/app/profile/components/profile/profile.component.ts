@@ -7,7 +7,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 
 import { Category, CategoryResponse } from '@models/category.model';
-import { LoginResponse, UserResponse } from '@models/register.model';
+import { LoginResponse, UserResponse, UserDataResponse } from '@models/register.model';
 import { PostsResponse } from '@models/posts.model';
 
 import { CategoryService } from '@core/category.service';
@@ -22,7 +22,7 @@ import { AuthService } from '@core/auth.service';
 export class ProfileComponent implements OnInit {
 
   userResponse: UserResponse;
-  userDataResponse: UserResponse [] = [];
+  userDataResponse: UserDataResponse;
   user: LoginResponse;
   category: Category = {category: '' };
   categories: CategoryResponse [] = [];
@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
     userData = JSON.parse(userData);
     this.user = userData.user;
     this.fetchCategories();
+    this.fetchUserPost();
   }
 
 // categories
@@ -108,8 +109,8 @@ export class ProfileComponent implements OnInit {
   navigateCreate(): void{
     this.router.navigate(['home/create']);
   }
-  fetchUserPost(user): void {
-    // const user = this.user.username;
+  fetchUserPost(): void {
+    const user = this.user.username;
     this.authService.infoUser(user)
     .subscribe( userDataResponse => {
       this.userDataResponse = userDataResponse;

@@ -38,8 +38,8 @@ export interface LoginResponse {
         reputation: number;
     };
     access_token: string;
-    posts:{
-        id  : number;
+    posts: {
+        id: number;
         created: string;
         modified: string;
         title: string;
@@ -66,3 +66,19 @@ export interface UserResponse {
         reputation: number;
     };
 }
+export interface UserDataResponse{
+    user: UserResponse;
+    posts: UserPost[];
+}
+export interface UserPost{
+        id: number;
+        created: string;
+        modified: string;
+        title: string;
+        post: string;
+        status: boolean;
+        visited: number;
+        user: number;
+        category: number;
+}
+

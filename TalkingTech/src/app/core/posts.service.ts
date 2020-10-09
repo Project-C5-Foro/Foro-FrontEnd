@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { TokenService } from './token.service';
 
 import { environment } from './../../environments/environment';
-import { PostsResponse, PostCreate } from '@models/posts.model';
+import { PostsResponse, PostCreate, PostDetailResponse } from '@models/posts.model';
 import { Recommended } from '@models/posts-recommended.model';
 
 @Injectable({
@@ -30,8 +30,8 @@ export class PostsService {
       map((response: any) => response.results as PostsResponse[])
     );
   }
-  getPostsDetail(id: PostsResponse): Observable<PostsResponse>{
-    return this.http.get<PostsResponse>(`${environment.API_Tt}/postsl/${id}/`);
+  getPostsDetail(id: PostDetailResponse): Observable<PostDetailResponse>{
+    return this.http.get<PostDetailResponse>(`${environment.API_Tt}/postsl/${id}/`);
   }
   createPost(data: PostCreate): Observable<PostsResponse>{
     console.log(data);

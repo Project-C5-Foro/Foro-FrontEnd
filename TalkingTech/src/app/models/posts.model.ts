@@ -29,3 +29,7 @@ export interface PostCreate {
     post: string;
     category: string;
 }
+export interface PostDetailResponse {
+    post: PostsResponse;
+    comments: string [];
+}
