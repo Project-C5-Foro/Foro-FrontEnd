@@ -9,7 +9,7 @@
       <mat-card-header>
         <img mat-card-avatar src="./../../../../assets/img__profile/Astronauta.png" alt="">
         <mat-card-title>{{postRecommended?.title | slice:0:30}}...</mat-card-title>
-        <mat-card-subtitle>{{postRecommended?.post_id.user}} <br> <span class="badge" style=" font-size: 14px; color: #301f70;">{{postRecommended?.post_id.category}}</span></mat-card-subtitle>
+        <mat-card-subtitle>{{postRecommended?.post_id.user.username}} <br> <span class="badge" style=" font-size: 14px; color: #301f70;">{{postRecommended?.post_id.category.category}}</span></mat-card-subtitle>
       </mat-card-header>
       <mat-card-content> 
         <p>{{postRecommended?.post_id.post | slice:0:300}}...</p>
